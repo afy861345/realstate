@@ -153,7 +153,7 @@ export async function getPropertyById({ id }: { id: string }) {
       config.databaseId!,
       config.propertiesCollectionId!,
       id,
-      [Query.select(["*", "agent.*", "gallery.*"])]
+      [Query.select(["*", "agent.*", "gallery.*", "reviews.*"])]
     );
     return result;
   } catch (error) {

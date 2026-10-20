@@ -1,0 +1,25 @@
+import { Redirect, Stack } from 'expo-router';
+import { ActivityIndicator } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { useGlobalContext } from '../../../lib/global-provider';
+const _layout = () => {
+  const { loading, isLogged } = useGlobalContext()
+  if (loading) {
+    return (
+      <SafeAreaView className="bg-white h-full flex justify-center items-center">
+        <ActivityIndicator className="text-primary-300" size="large" />
+      </SafeAreaView>
+    );
+  }
+
+  if (isLogged) {
+    return <Redirect href="/(root)/(tabs)" />;
+  }
+  return <Stack screenOptions={{
+    headerShown: false
+  }} />
+}
+
+export default _layout
+
+
